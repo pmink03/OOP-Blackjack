@@ -1,22 +1,17 @@
 # simple console game of blackjack in object oriented Ruby
 
 class Player
-  attr_reader :name, :hand, :score, :is_dealer
+  attr_reader :name, :hand, :score
   
-  def initialize(name, is_dealer)
+  def initialize(name)
     @name = name
     @hand = []
     @score = 0
-    @is_dealer = is_dealer
   end
   
   def reset
     @hand = []
     @score = 0
-  end
-  
-  def is_dealer?
-    @is_dealer
   end
   
   def add_card(card)
@@ -54,7 +49,7 @@ class Player
 end
 
 class Deck
-  attr_accessor :game_deck, :cards
+  attr_accessor :game_deck
   
   def initialize
     @game_deck = []
@@ -117,7 +112,7 @@ class Game
   
   def initialize
     create_player
-    @dealer = Player.new 'Dealer', true
+    @dealer = Player.new 'Dealer'
     @game_deck = Deck.new
     set_num_decks
     @game_deck.shuffle!
@@ -131,9 +126,9 @@ class Game
     puts "Greetings Player. What's your name?"
     name = gets.chomp
     if(name.empty?)
-      @player = Player.new "Player", false
+      @player = Player.new "Player"
     else
-      @player = Player.new name, false
+      @player = Player.new name
     end
   end
   
