@@ -1,4 +1,4 @@
-# simple console game of blackjack in Ruby
+# simple console game of blackjack in object oriented Ruby
 
 class Player
   attr_reader :name, :hand, :score, :is_dealer
